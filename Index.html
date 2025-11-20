@@ -1,0 +1,159 @@
+<!doctype html>
+
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{TOKEN_NAME}} ({{SYMBOL}}) — Official</title>
+  <meta name="description" content="Website resmi {{TOKEN_NAME}} — token on {{CHAIN}}. Contract: {{CONTRACT_ADDRESS}}">
+  <meta property="og:title" content="{{TOKEN_NAME}} ({{SYMBOL}})" />
+  <meta property="og:description" content="Official site of {{TOKEN_NAME}}. Buy on DEX, tokenomics, roadmap and socials." />
+  <meta property="og:image" content="/assets/logo.png" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Small custom tweaks */
+    body {font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    .glass {backdrop-filter: blur(6px); background: rgba(255,255,255,0.06)}
+    .hero-bg {background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(16,185,129,0.08));}
+    code.copy {cursor:pointer}
+  </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+  <header class="max-w-6xl mx-auto p-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center"> <img id="logo" src="/assets/logo.png" alt="logo" class="w-10 h-10 object-contain"> </div>
+      <div>
+        <h1 class="text-xl font-semibold">{{TOKEN_NAME}} <span class="text-sm text-green-400">({{SYMBOL}})</span></h1>
+        <p class="text-xs text-gray-400">Token di jaringan: <strong id="chain">{{CHAIN}}</strong></p>
+      </div>
+    </div>
+    <nav class="flex items-center gap-3">
+      <a href="#buy" class="btn px-4 py-2 bg-green-500 rounded-md text-black font-medium">Beli / Swap</a>
+      <a href="#tokenomics" class="text-sm text-gray-300 hover:text-white">Tokenomics</a>
+      <a href="#roadmap" class="text-sm text-gray-300 hover:text-white">Roadmap</a>
+    </nav>
+  </header>  <main class="max-w-6xl mx-auto p-6">
+    <!-- Hero -->
+    <section class="hero-bg rounded-2xl p-8 mb-8 glass">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <div class="flex-1">
+          <h2 class="text-3xl font-bold mb-2">Welcome to <span class="text-green-400">{{TOKEN_NAME}}</span></h2>
+          <p class="text-gray-300 mb-4">{{SHORT_DESC}}</p>
+          <div class="flex gap-3">
+            <a id="buyBtn" href="#buy" class="px-5 py-3 bg-green-500 rounded-lg text-black font-semibold">Beli Sekarang</a>
+            <button id="copyContract" class="px-4 py-3 border border-gray-700 rounded-lg">Salin Contract</button>
+            <a id="dexLink" href="#" target="_blank" class="px-4 py-3 border border-gray-700 rounded-lg">Lihat Pair</a>
+          </div>
+        </div>
+        <div class="w-48">
+          <img id="heroLogo" src="/assets/logo.png" alt="logo" class="w-48 h-48 object-contain rounded-xl shadow-2xl bg-white/5 p-4">
+        </div>
+      </div>
+    </section><!-- Quick info -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+  <div class="p-4 rounded-lg glass">
+    <p class="text-xs text-gray-400">Contract</p>
+    <p class="break-all font-mono mt-1" id="contract">{{CONTRACT_ADDRESS}}</p>
+  </div>
+  <div class="p-4 rounded-lg glass">
+    <p class="text-xs text-gray-400">Total Supply</p>
+    <p class="mt-1">{{TOTAL_SUPPLY}}</p>
+  </div>
+  <div class="p-4 rounded-lg glass">
+    <p class="text-xs text-gray-400">Decimals</p>
+    <p class="mt-1">{{DECIMALS}}</p>
+  </div>
+  <div class="p-4 rounded-lg glass">
+    <p class="text-xs text-gray-400">Liquidity</p>
+    <p class="mt-1">{{LIQUIDITY_INFO}}</p>
+  </div>
+</section>
+
+<!-- Tokenomics -->
+<section id="tokenomics" class="mb-8 p-6 rounded-xl glass">
+  <h3 class="text-2xl font-bold mb-3">Tokenomics</h3>
+  <div class="grid md:grid-cols-3 gap-4">
+    <div class="p-4 bg-white/3 rounded-lg">
+      <h4 class="font-semibold">Distribution</h4>
+      <ul class="mt-2 text-sm text-gray-300">
+        <li>• Liquidity: {{TOK_LIQUIDITY}}</li>
+        <li>• Presale: {{TOK_PRESALE}}</li>
+        <li>• Team: {{TOK_TEAM}}</li>
+        <li>• Marketing: {{TOK_MARKETING}}</li>
+      </ul>
+    </div>
+    <div class="p-4 bg-white/3 rounded-lg">
+      <h4 class="font-semibold">Fees</h4>
+      <p class="mt-2 text-sm text-gray-300">Buy fee: {{FEE_BUY}} — Sell fee: {{FEE_SELL}}</p>
+    </div>
+    <div class="p-4 bg-white/3 rounded-lg">
+      <h4 class="font-semibold">Lock & Audit</h4>
+      <p class="mt-2 text-sm text-gray-300">Liquidity lock: {{LOCK_INFO}}<br>Audit: {{AUDIT_INFO}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Roadmap -->
+<section id="roadmap" class="mb-8 p-6 rounded-xl glass">
+  <h3 class="text-2xl font-bold mb-3">Roadmap</h3>
+  <ol class="list-decimal list-inside text-gray-300">
+    <li>{{RM_Q1}}</li>
+    <li>{{RM_Q2}}</li>
+    <li>{{RM_Q3}}</li>
+    <li>{{RM_Q4}}</li>
+  </ol>
+</section>
+
+<!-- Buy section -->
+<section id="buy" class="mb-8 p-6 rounded-xl glass">
+  <h3 class="text-2xl font-bold mb-3">Beli / Swap</h3>
+  <p class="text-gray-300 mb-3">Gunakan link swap di bawah untuk membeli token.</p>
+  <a id="swapLink" href="" target="_blank" class="inline-block px-6 py-3 bg-indigo-600 rounded-lg font-semibold">Buka di DEX</a>
+  <div class="mt-4 text-sm text-gray-400">Atau tambahkan token ke wallet Anda:</div>
+  <button id="addToMeta" class="mt-2 px-4 py-2 border rounded">Tambahkan ke MetaMask</button>
+</section>
+
+<!-- Socials & Contact -->
+<section class="mb-8 p-6 rounded-xl glass">
+  <h3 class="text-2xl font-bold mb-3">Socials & Contact</h3>
+  <div class="flex gap-4 items-center">
+    <a id="twitter" href="#" class="text-sm">Twitter</a>
+    <a id="telegram" href="#" class="text-sm">Telegram</a>
+    <a id="contractscan" href="#" class="text-sm">Explorer</a>
+  </div>
+  <div class="mt-4 text-sm text-gray-400">Email: <span id="email">{{EMAIL}}</span></div>
+</section>
+
+  </main>  <footer class="max-w-6xl mx-auto p-6 text-center text-sm text-gray-500">© <span id="year"></span> {{TOKEN_NAME}} — All rights reserved</footer>  <script>
+    // Populate year
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // Copy contract
+    document.getElementById('copyContract').addEventListener('click', function(){
+      const text = document.getElementById('contract').innerText;
+      navigator.clipboard.writeText(text).then(()=>{
+        alert('Contract address disalin ke clipboard');
+      });
+    });
+
+    // Add to MetaMask
+    document.getElementById('addToMeta').addEventListener('click', async function(){
+      const tokenAddress = document.getElementById('contract').innerText.trim();
+      const tokenSymbol = '{{SYMBOL}}';
+      const tokenDecimals = Number('{{DECIMALS}}') || 18;
+      try {
+        if (window.ethereum) {
+          const wasAdded = await window.ethereum.request({
+            method: 'wallet_watchAsset',
+            params: { type: 'ERC20', options: { address: tokenAddress, symbol: tokenSymbol, decimals: tokenDecimals, image: window.location.origin + '/assets/logo.png' }}
+          });
+          alert(wasAdded ? 'Token ditambahkan ke wallet' : 'Token tidak ditambahkan');
+        } else {
+          alert('MetaMask tidak terdeteksi di browser Anda.');
+        }
+      } catch (err) { alert('Gagal: ' + err.message) }
+    });
+
+    // Placeholders: developer can replace these values server-side or via small JS fetch from a JSON file
+  </script></body>
+</html>
